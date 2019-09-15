@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>GifTastic</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>GifTastic</h1>
+
+        <div id="newButtons"></div>
+
+       
+            <label for = 'gifs-add'>search for</label>
+            <input id = "gifs-add" type = 'text' >
+
+            
+            <buttton type = 'submit' id = 'add-giphy' onclick= "displayGifsTastic()">Add Giphy</buttton>
+        
+        
+        <div id='gifs-view'></div>
+    </div>
+    <script type="text/javascript">
+    var topics = ['soccer', 'coding', 'hacks', 'cats']
+
+function displayGifsTastic() {
+
+    var input = $('#gifs-add').val()
+
+    //javascript, jQuery
+
+var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ input + "&api_key=AQfJTW55t5y7xzZAZeU4fX67ohfKAtUW");
+xhr.done(function(response) {
+
+
+    var Giphy = response.data
+
+    for (i in Giphy) {
+
+        $('#gifs-view').append("<img src='" + Giphy[i].images.original.url + "'/>")
+    }
+
+});
+
+
+    
+
+}
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
