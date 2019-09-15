@@ -48,11 +48,42 @@ xhr.done(function(response) {
     }
 
 });
+}
+function renderButtons() {
+    
+    $('#newButtons').empty();
+
+    for (var i = 0; i < topics.length; i++) {
+
+        var button = $('<button>');
+
+        button.addClass('brand-new');
+
+        button.attr("data-name", topics[i]);
+
+        button.text(topics[i]);
+
+        $('#newButtons').append(button);
+    }
+} 
+    $('#add-giphy').on('click',function(event) {
+        event.preventDefault();
+
+        var button = $('#gifs-add').val().trim();
+
+        topics.push(button);
+
+        renderButtons();
+    });
+    $(document).on('click', '.brand-new', displayGifsTastic);
+
+
+    renderButtons();
 
 
     
 
-}
+
 
 
     
